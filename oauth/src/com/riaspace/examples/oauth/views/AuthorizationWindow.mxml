@@ -16,15 +16,20 @@
 			public var oauth_verifier:String;
 			
 			public function authorizeToken(authorizeTokenUrl:String, requestToken:OAuthToken):void
-			{				
+			{			
+				// Creating authorization url based on authorize token url and key received
+				// from a request token request
 				var authUrl:String = authorizeTokenUrl + "?oauth_token=" + requestToken.key;
+				// Setting location to authUrl
 				html.location = authUrl;
-				
+
 				trace("Token auth url:", authUrl);
 			}
 
 			protected function html_locationChangeHandler(event:Event):void
 			{
+				// Parsing changed location, if it contains oauth_verifier
+				// user authorized the application to access service resources
 				if (html.location.indexOf("oauth_verifier") >= 0)
 				{
 					var urlSplit:Array = html.location.split("?");
@@ -36,9 +41,11 @@
 							var paramSplit:Array = param.split("=");
 							if (paramSplit.length == 2 && paramSplit[0] == "oauth_verifier")
 							{
+								// Url decoding oauth_verifier value
 								oauth_verifier = URLEncoding.decode(paramSplit[1]);
+								// Dispatching complete event, to notify the app that
+								// it can proceed to access token request step.
 								dispatchEvent(new Event(Event.COMPLETE));
-								
 								break;
 							}
 						}
@@ -47,10 +54,6 @@
 			}
 		]]>
 	</fx:Script>
-	
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
 	
 	<mx:HTML id="html" width="100%" height="100%" locationChange="html_locationChangeHandler(event)" />
 	

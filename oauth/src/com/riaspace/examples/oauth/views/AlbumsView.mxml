@@ -14,12 +14,19 @@
 			import org.iotashan.oauth.OAuthRequest;
 			import org.iotashan.oauth.OAuthToken;
 			
+			/**
+			 * Loads albums when application enters authorized state.
+			 */
 			public function loadAlbums():void
 			{
+				// Gettings access token from topLevelApplication
 				var accessToken:OAuthToken = FlexGlobals.topLevelApplication.accessToken;
+				// Gettings OAuthConsumer from topLevelApplication
 				var consumer:OAuthConsumer = FlexGlobals.topLevelApplication.consumer;
+				// Gettings IOAuthSignatureMethod from topLevelApplication
 				var signature:IOAuthSignatureMethod = FlexGlobals.topLevelApplication.signature;
 				
+				// Creating OAuthRequest to get users albums list
 				var oauthRequest:OAuthRequest = 
 					new OAuthRequest(
 						OAuthRequest.HTTP_MEHTOD_GET, "https://picasaweb.google.com/data/feed/api/user/default", 
@@ -27,11 +34,14 @@
 						consumer, accessToken
 					);
 				
+				// Creating URLRequest with authorized headers
 				var request:URLRequest = new URLRequest(oauthRequest.requestURL);
 				request.requestHeaders.push(oauthRequest.buildRequest(signature, OAuthRequest.RESULT_TYPE_HEADER));
 				request.method = URLRequestMethod.GET;
+				// Content type returned by Googles service
 				request.contentType = "application/atom+xml";
 				
+				// Creating URLLoader to invoke Google service
 				var loader:URLLoader = new URLLoader;
 				loader.addEventListener(Event.COMPLETE, getAlbums_completeHandler);
 				loader.addEventListener(IOErrorEvent.IO_ERROR, getAlbums_ioErrorHandler);
@@ -40,16 +50,18 @@
 			
 			protected function getAlbums_completeHandler(event:Event):void
 			{
+				// Switching AlbumsView to loaded state
 				currentState = "loaded";
-				
+				// Defining Atom namespace
 				default xml namespace = new Namespace("http://www.w3.org/2005/Atom");
 				var contactsXml:XML = XML(URLLoader(event.currentTarget).data);
-				
+				// Setting albums list data provider
 				lstAlbums.dataProvider = new XMLListCollection(contactsXml.entry.title);
 			}
 			
 			protected function getAlbums_ioErrorHandler(event:IOErrorEvent):void
 			{
+				// Notifying user about error when getting albums list
 				Alert.show("Error getting albums: " + URLLoader(event.currentTarget).data, "Error!");
 			}
 		]]>
@@ -59,10 +71,6 @@
 		<s:State name="loading" />
 		<s:State name="loaded" />
 	</s:states>
-	
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
 	
 	<s:Label text="Loading your albums..." verticalCenter="0" horizontalCenter="0" includeIn="loading" />
 	

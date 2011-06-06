@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="Dashboard" 
+		creationComplete="view_creationCompleteHandler(event)" 
+		xmlns:components="com.adobe.lcds.samples.dashboard.components.*">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.messaging.events.MessageEvent;
+			import mx.messaging.messages.AsyncMessage;
+			import mx.messaging.messages.IMessage;
+			import mx.rpc.events.ResultEvent;
+			
+			[Bindable]
+			public var slicedMonthData:ArrayCollection;
+			
+			[Bindable]
+			public var slicedRegionData:ArrayCollection;
+			
+			private var monthData:Array;
+			
+			private var regionData:Array;
+			
+			private function rangeChange():void
+			{
+				var message:IMessage = new AsyncMessage();
+				message.body = {min: sliderMin.value, max: sliderMax.value + 1};
+				producer.send(message);
+			}
+			
+			private function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				producer.channelSet = FlexGlobals.topLevelApplication.messagingChannels;
+				consumer.channelSet = FlexGlobals.topLevelApplication.messagingChannels;
+				
+				srv.send();			
+				consumer.subscribe();
+				
+				slicedMonthData = new ArrayCollection();
+				slicedRegionData = new ArrayCollection();
+			}
+			
+			private function resultHandler(event:ResultEvent):void
+			{
+				monthData = event.result.list.month.source as Array;
+				
+				sliderMin.value = 0;
+				sliderMax.value = monthData.length - 1;
+				
+				slicedMonthData.source = monthData;
+				regionBreakdown.month = monthData[0];
+				
+				regionData = new Array(monthData.length);
+				var monthTotal:Number;
+				
+				for (var i:Number = 0; i < monthData.length; i++) 
+				{
+					regionData[i] = {name: monthData[i].name, average: 0, revenue: 0};
+					var regions:Array = monthData[i].region.source;
+					monthTotal = 0;
+					for (var j:Number = 0; j < regions.length; j++)
+					{
+						monthTotal += regions[j].revenue;
+					}
+					regionData[i].average = monthTotal/monthData[i].region.length
+				}
+				slicedRegionData.source = regionData.slice(sliderMin.value, sliderMax.value);
+			}
+			
+			private function getSliderLabel(value:String):String 
+			{
+				return monthData[parseInt(value)].name;
+			}
+			
+			private function monthChange():void
+			{
+				var message:IMessage = new AsyncMessage();
+				message.body = {month: timeline.selectedMonth};
+				producer.send(message);
+			}
+			
+			private function regionChange():void
+			{
+				var message: IMessage = new AsyncMessage();
+				message.body = {region: regionBreakdown.selectedRegion};
+				producer.send(message);
+			}
+			
+			private function messageHandler(event:MessageEvent):void
+			{
+				var body:Object = event.message.body;
+				
+				if (body.min != null) //range
+				{
+					sliderMin.value = body.min;
+					sliderMax.value = body.max - 1;
+					
+					if (monthData != null)
+						slicedMonthData.source = monthData.slice(body.min, body.max);
+					if (regionData != null)
+						slicedRegionData.source = regionData.slice(body.min, body.max);
+					
+				} 
+				else if (body.month != null) //month in timeline
+				{
+					regionBreakdown.month = body.month;
+				} 
+				else if (body.region != null) //region from breakdown
+				{
+					regionBreakdown.selectedRegion = body.region;
+					regionDetail.region = body.region.name;
+					
+					for (var i: Number = 0; i < monthData.length; i++) 
+					{
+						var regions: Array = monthData[i].region.source;
+						for (var j: Number = 0; j < regions.length; j++) 
+						{
+							if (regions[j].name == body.region.name)
+							{
+								regionData[i].revenue = regions[j].revenue;
+								break;
+							}
+						}
+					}
+					slicedRegionData.source = regionData.slice(sliderMin.value, sliderMax.value + 1);
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:HTTPService id="srv" url="com/adobe/lcds/samples/dashboard/assets/results.xml" useProxy="false" result="resultHandler(event)"/>
+		
+		<s:Producer id="producer" destination="dashboard" /> 
+		<s:Consumer id="consumer" destination="dashboard" message="messageHandler(event)" />
+	</fx:Declarations>
+	
+	<s:HGroup left="10" top="10" right="10" bottom="10">
+		<s:VGroup width="50%" height="100%" horizontalAlign="center">
+			<components:RevenueTimeline id="timeline" revenueData="{slicedMonthData.source}" monthChange="monthChange()" 
+										height="90%" width="100%" />
+			<s:HGroup width="100%" verticalAlign="middle">
+				<s:Label text="Range:" />
+				<s:HSlider id="sliderMin" width="50%" change="rangeChange()"
+						   minimum="0" maximum="11" snapInterval="1"
+						   dataTipFormatFunction="getSliderLabel"/>
+				<s:HSlider id="sliderMax" width="50%" change="rangeChange()" 
+						   minimum="12" maximum="23" snapInterval="1"
+						   dataTipFormatFunction="getSliderLabel"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup width="50%" height="100%">
+			<components:RegionBreakdown id="regionBreakdown" width="100%" height="50%" regionChange="regionChange()" />
+			<components:RegionDetail id="regionDetail" revenueData="{slicedRegionData.source}" width="100%" height="50%" />
+		</s:VGroup>
+	</s:HGroup>
+	
+</s:View>

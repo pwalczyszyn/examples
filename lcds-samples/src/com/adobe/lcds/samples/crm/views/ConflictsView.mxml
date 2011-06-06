@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		actionBarVisible="false" 
+		creationComplete="view_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.crm.models.Company;
+			
+			import mx.collections.ArrayCollection;
+			import mx.data.Conflict;
+			import mx.data.Conflicts;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			protected var currentConflict:Conflict;
+
+			protected var _conflicts:Conflicts;
+			
+			[Bindable]
+			protected var clientObject:Company;
+			
+			[Bindable]
+			protected var properties:ArrayCollection;
+			
+			private var currentConflictIndex:int;
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				_conflicts = data as Conflicts;
+				currentConflictIndex = -1;
+				nextConflict();
+			}
+			
+			private function acceptServer():void
+			{
+				currentConflict.acceptServer();
+				nextConflict();
+			}
+			
+			private function acceptClient():void
+			{
+				currentConflict.acceptClient();
+				nextConflict();
+			}
+			
+			private function nextConflict():void
+			{
+				currentConflictIndex++;
+				if (currentConflictIndex >= _conflicts.length)
+				{
+					navigator.popView();
+					
+					_conflicts = null;
+					currentConflict = null;
+				}
+				else
+				{
+					var conflict:Conflict = _conflicts.getItemAt(currentConflictIndex) as Conflict;
+					if (conflict.resolved == true)
+						nextConflict();
+					else
+						currentConflict = conflict;
+					
+					clientObject = currentConflict.clientObject as Company;
+					
+					properties = new ArrayCollection;
+					for each(var prop:String in currentConflict.propertyNames)
+					{
+						properties.addItem({propertyName : prop, conflict : currentConflict});
+					}
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<s:Panel title="Data Conflicts" width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout gap="20" horizontalAlign="center" paddingTop="20" paddingLeft="10" paddingRight="10" paddingBottom="10" />
+		</s:layout>
+
+		<s:Label text="Someone else has just revised the data you are about to update. The differences are:"
+				 width="100%"/>
+		
+		<s:Label text="Company: {clientObject.name}" width="100%" textAlign="center" fontWeight="bold" />
+
+		<s:List id="lstProps" dataProvider="{properties}" width="100%" height="100%"
+				itemRenderer="com.adobe.lcds.samples.crm.views.ConflictListItemRenderer"
+				/>
+		<s:HGroup horizontalAlign="right" verticalAlign="middle">
+			<s:Button label="Use Yours" click="acceptClient()"/>
+			<s:Button label="Use Server" click="acceptServer()"/>
+		</s:HGroup>
+	</s:Panel>
+	
+</s:View>

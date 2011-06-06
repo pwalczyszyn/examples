@@ -1,0 +1,22 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+global
+{
+	accentColor: #6589AD;
+}
+
+
+@media(os-platform: "IOS")
+{
+	s|ActionBar
+	{
+		defaultButtonAppearance: beveled;
+	}
+	
+	.backButton
+	{
+		skinClass:ClassReference("spark.skins.mobile.BeveledBackButtonSkin");
+	}
+}
+

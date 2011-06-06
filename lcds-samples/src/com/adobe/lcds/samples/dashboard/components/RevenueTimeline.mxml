@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" width="400" height="300" xmlns:mx="library://ns.adobe.com/flex/mx"
+		 title="Revenue Timeline">
+	
+	<fx:Metadata>
+		[Event("monthChange")]
+	</fx:Metadata>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.common.utils.SortUtils;
+			
+			import mx.charts.HitData;
+			
+			[Bindable]
+			public var revenueData:Array;
+			
+			[Bindable]
+			public var selectedMonth:Object;
+			
+			private var colors:Array = [0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0x00FFFF];
+			
+			protected function monthChange(month:Object):void
+			{
+				selectedMonth = month;
+				dispatchEvent(new Event("monthChange"));
+			}
+			
+			protected function currencyFormat(value:Object, arg2:Object, arg3:Object):String
+			{
+				return cf.format(value);
+			}
+			
+			private function dataGridCurrencyFormat(item:Object, column:Object):String
+			{
+				return cf.format(item[column.dataField]);
+			}
+			
+			private function sortByDates(obj1:Object, obj2:Object):Number
+			{
+				var n:Number = SortUtils.sortByDates(obj1, obj2, "name");
+				return n;
+			}
+			
+			private function formatDataTip(hitData:HitData):String
+			{
+				var name:String = hitData.item.name;
+				var revenue:Number = hitData.item.revenue;
+				return "<b>Month: "+name+"</b><br>Revenue: "+cf.format(revenue);
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:SeriesInterpolate id="interpolate" elementOffset="10"/>
+		<s:CurrencyFormatter id="cf"/>
+	</fx:Declarations>
+	
+	<mx:LineChart id="lc" dataProvider="{revenueData}" showDataTips="true" width="100%" height="100%" dataTipFunction="formatDataTip"
+				  itemClick="monthChange(event.hitData.item)" fontSize="20">
+		
+		<mx:horizontalAxis>
+			<mx:CategoryAxis dataProvider="{revenueData}" categoryField="name"/>
+		</mx:horizontalAxis>
+		
+		<mx:verticalAxis>
+			<mx:LinearAxis labelFunction="currencyFormat"/>
+		</mx:verticalAxis>
+		
+		<mx:series>
+			<mx:LineSeries yField="revenue"  showDataEffect="{interpolate}">
+				<mx:lineStroke>
+					<s:SolidColorStroke color="#708EA4" weight="1"/>
+				</mx:lineStroke>
+			</mx:LineSeries>
+			<mx:LineSeries yField="license"  showDataEffect="{interpolate}">
+				<mx:lineStroke>
+					<s:SolidColorStroke weight="1"/>
+				</mx:lineStroke>
+			</mx:LineSeries>
+		</mx:series>
+		
+		<mx:backgroundElements>
+			<fx:Array>
+				<mx:GridLines gridDirection="both"> 
+					<mx:verticalStroke>
+						<s:SolidColorStroke weight="1" color="#CCCCCC"/>
+					</mx:verticalStroke>
+				</mx:GridLines>
+			</fx:Array>
+		</mx:backgroundElements>
+		
+	</mx:LineChart>
+</s:Panel>

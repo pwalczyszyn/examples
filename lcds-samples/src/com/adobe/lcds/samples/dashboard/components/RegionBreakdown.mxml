@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" width="400" height="300" xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Metadata>
+		[Event("regionChange")]
+	</fx:Metadata>
+
+	<fx:Script>
+		<![CDATA[
+			import mx.charts.HitData;
+			
+			public function set month(m:Object):void
+			{
+				_month = m;
+				this.title = "Regional Breakdown [" + _month.name + "]";
+			}
+			
+			[Bindable]
+			private var _month:Object;
+			
+			private function getSliceLabel(item:Object, arg2:String, arg3:Number, arg4:Number):String
+			{
+				return item==null?"":item.name;
+			}
+			
+			private var _selectedRegion:Object;
+			
+			public function get selectedRegion():Object
+			{
+				return _selectedRegion;
+			}
+			
+			public function set selectedRegion(item:Object):void
+			{
+				_selectedRegion = item;
+				
+				var index:int = -1;
+				for (var i:int=0; i < _month.region.length && index == -1; i++)
+				{
+					if (_month.region[i].name == item.name)
+						index = i;
+				}
+				//we only want to explode the selected region
+				var explodeData:Array = [];
+				explodeData[index] = 0.15;
+				pcRegion.series[0].perWedgeExplodeRadius = explodeData;
+			}
+			
+			private function regionChange(item:Object):void
+			{
+				selectedRegion = item;
+				dispatchEvent(new Event("regionChange"));
+			}
+			
+			private function dataGridCurrencyFormat(item:Object, column:Object):String
+			{
+				return cf.format(item[column.dataField]);
+			}
+			
+			private function formatDataTip(hitData:HitData):String
+			{
+				var name:String = hitData.item.name;
+				var revenue:Number = hitData.item.revenue;
+				return "<b>Region: "+name+"</b><br>Revenue: "+cf.format(revenue);
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:CurrencyFormatter id="cf"/>
+		<mx:SeriesInterpolate id="interpolate" elementOffset="10"/>
+	</fx:Declarations>
+	
+	<mx:PieChart id="pcRegion" dataProvider="{_month.region}" showDataTips="true" width="100%" height="100%"
+				 dataTipFunction="formatDataTip" itemClick="regionChange(event.hitData.item)">
+		<mx:series>
+			<fx:Array>
+				<mx:PieSeries field="revenue" nameField="name" labelPosition="callout"
+							  labelFunction="getSliceLabel" fontSize="32" showDataEffect="{interpolate}">
+					<mx:fills>
+						<fx:Array>
+							<mx:RadialGradient>
+								<mx:entries>
+									<fx:Array>
+										<mx:GradientEntry color="#EF7651" ratio="0"/>
+										<mx:GradientEntry color="#994C34" ratio="1"/>
+									</fx:Array>
+								</mx:entries>
+							</mx:RadialGradient>
+							<mx:RadialGradient>
+								<mx:entries>
+									<fx:Array>
+										<mx:GradientEntry color="#E9C836" ratio="0"/>
+										<mx:GradientEntry color="#AA9127" ratio="1"/>
+									</fx:Array>
+								</mx:entries>
+							</mx:RadialGradient>
+							<mx:RadialGradient>
+								<mx:entries>
+									<fx:Array>
+										<mx:GradientEntry color="#6FB35F" ratio="0"/>
+										<mx:GradientEntry color="#497B54" ratio="1"/>
+									</fx:Array>
+								</mx:entries>
+							</mx:RadialGradient>
+							<mx:RadialGradient>
+								<mx:entries>
+									<fx:Array>
+										<mx:GradientEntry color="#A1AECF" ratio="0"/>
+										<mx:GradientEntry color="#47447A" ratio="1"/>
+									</fx:Array>
+								</mx:entries>
+							</mx:RadialGradient>
+							<mx:RadialGradient>
+								<mx:entries>
+									<fx:Array>
+										<mx:GradientEntry color="#BA9886" ratio="0"/>
+										<mx:GradientEntry color="#AE775B" ratio="1"/>
+									</fx:Array>
+								</mx:entries>
+							</mx:RadialGradient>
+						</fx:Array>
+					</mx:fills>
+				</mx:PieSeries>
+			</fx:Array>
+		</mx:series>
+		
+	</mx:PieChart>
+
+</s:Panel>

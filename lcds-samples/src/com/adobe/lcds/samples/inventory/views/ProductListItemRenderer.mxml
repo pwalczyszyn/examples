@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark"  
+					labelField="name" iconWidth="40" iconHeight="64" 
+					decorator="@Embed('com/adobe/lcds/samples/inventory/assets/list_decorator.png')"
+					messageFunction="myMessageFunction" iconFunction="myIconFunction">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.inventory.models.Product;
+			
+			import mx.core.FlexGlobals;
+			
+			protected function myMessageFunction(item:Product):String
+			{
+				return item.description.length > 123 ? item.description.substr(0, 120) + "..." : item.description;
+			}
+			
+			protected function myIconFunction(item:Product):Object
+			{
+				return "http://" + FlexGlobals.topLevelApplication.serverName + ":" + FlexGlobals.topLevelApplication.serverPort + "/lcds-samples/images/" + item.image;
+			}
+			
+		]]>
+	</fx:Script>
+	
+</s:IconItemRenderer>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark"  
+					labelField="name" messageFunction="companyMessageFunction" 
+					iconWidth="64" iconHeight="64" >
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.crm.models.Company;
+			
+			protected function companyMessageFunction(company:Company):String
+			{
+				return company.industry + " | " + company.city + ", " + company.state;
+			}
+		]]>
+	</fx:Script>
+	
+</s:IconItemRenderer>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		creationComplete="view_creationCompleteHandler(event)"
+		destructionPolicy="never" textAlign="left" title="Inventory Management"
+		add="view_addHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			import spark.events.TextOperationEvent;
+			import spark.events.ViewNavigatorEvent;
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				srv.channelSet = FlexGlobals.topLevelApplication.remotingChannels;
+			}
+			
+			protected function txtSearch_changeHandler(event:TextOperationEvent):void
+			{
+				if (currentState != "results")
+					currentState = "results";
+				
+				lstResults.dataProvider = null;
+				srv.getProductsByName(txtSearch.text);
+			}
+			
+			protected function srv_resultHandler(event:ResultEvent):void
+			{
+				lstResults.dataProvider = event.result as ArrayCollection;
+			}
+			
+			protected function lstResults_changeHandler(event:IndexChangeEvent):void
+			{
+				if (lstResults.selectedItem)
+					navigator.pushView(ProductFormView, lstResults.selectedItem);
+			}
+			
+			protected function view_addHandler(event:FlexEvent):void
+			{
+				if (navigator.poppedViewReturnedObject && navigator.poppedViewReturnedObject.object)
+					lstResults.dataProvider.removeItemAt(
+						lstResults.dataProvider.getItemIndex(navigator.poppedViewReturnedObject.object)
+						);
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="initial"/>
+		<s:State name="results"/>
+	</s:states>
+	
+	<fx:Declarations>
+		<s:RemoteObject id="srv" destination="product" result="srv_resultHandler(event)"/>
+	</fx:Declarations>
+	
+	<s:actionContent>
+		<s:TextInput id="txtSearch" x="229" width="400" change="txtSearch_changeHandler(event)"/>
+		<s:Spacer width="15" />
+<!--		
+		<s:Button label="+" />
+-->	
+	</s:actionContent>
+	
+	<s:Label includeIn="initial" width="80%" horizontalCenter="0" textAlign="center"
+			 verticalCenter="0">
+		<s:text>
+			Type a few characters in the Search box in the upper right corner to search for products. 
+			For example type "no". You can also click the + button to add a new product.
+		</s:text>
+	</s:Label>
+	
+	<s:List id="lstResults" includeIn="results" left="10" right="10" top="10" bottom="10"
+			change="lstResults_changeHandler(event)"
+			itemRenderer="com.adobe.lcds.samples.inventory.views.ProductListItemRenderer">
+	</s:List>
+	
+</s:View>

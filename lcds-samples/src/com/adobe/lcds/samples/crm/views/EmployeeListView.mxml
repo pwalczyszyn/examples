@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="EmployeeListView"
+		actionBarVisible="false" creationComplete="view_creationCompleteHandler(event)"
+		viewActivate="view_viewActivateHandler(event)" 
+		viewDeactivate="view_viewDeactivateHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			
+			import spark.events.ViewNavigatorEvent;
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				dsEmployee.channelSet = FlexGlobals.topLevelApplication.messagingChannels;
+				dsEmployee.fill(employees, "by-company", data.companyId);
+			}
+			
+			protected function view_viewActivateHandler(event:ViewNavigatorEvent):void
+			{
+				dispatchEvent(new Event("employeeListViewActivated", true, true));
+					
+				NativeApplication.nativeApplication.addEventListener(KeyboardEvent.KEY_DOWN, view_keyDownHandler);
+			}
+			
+			protected function view_viewDeactivateHandler(event:ViewNavigatorEvent):void
+			{
+				dispatchEvent(new Event("employeeListViewDeactivated", true, true));
+					
+				NativeApplication.nativeApplication.removeEventListener(KeyboardEvent.KEY_DOWN, view_keyDownHandler);
+			}
+			
+			protected function view_keyDownHandler(event:KeyboardEvent):void
+			{
+				if (event.keyCode == Keyboard.BACK)
+					navigator.popView();
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:ArrayCollection id="employees"/>
+		<s:DataService id="dsEmployee" autoCommit="false" destination="crm-employee" />
+	</fx:Declarations>
+	
+	<s:Panel title="Employees" left="10" top="10" right="10" bottom="10">
+		<s:List id="lstEmployees" width="100%" height="100%"
+				dataProvider="{employees}" 
+				itemRenderer="com.adobe.lcds.samples.crm.views.EmployeeListItemRenderer"/>
+	</s:Panel>
+	
+</s:View>

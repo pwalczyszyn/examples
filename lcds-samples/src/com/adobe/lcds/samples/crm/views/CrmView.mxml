@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="CRM"
+		creationComplete="view_creationCompleteHandler(event)"
+		destructionPolicy="never">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			import mx.data.events.DataConflictEvent;
+			import mx.events.FlexEvent;
+			import mx.events.ValidationResultEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			[Bindable]
+			protected var showBackButton:Boolean = false;
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				dsCompany.channelSet = FlexGlobals.topLevelApplication.messagingChannels;
+				dsCompany.fill(companies);
+				
+				vnDetails.addEventListener("employeeListViewActivated", employeeList_activatedHandler);
+				vnDetails.addEventListener("employeeListViewDeactivated", employeeList_deactivatedHandler);
+			}
+			
+			protected function lstCompanies_changeHandler(event:IndexChangeEvent):void
+			{
+				vnDetails.replaceView(CompanyDetailsView, lstCompanies.selectedItem);
+			}
+			
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				if (vnDetails.activeView is CompanyDetailsView 
+					&& 
+					CompanyDetailsView(vnDetails.activeView).companyNameValidator.validate().type == ValidationResultEvent.VALID
+					&& 
+					dsCompany.commitRequired)
+				{
+					dsCompany.commit();
+				}
+			}
+			
+			protected function dsCompany_conflictHandler(event:DataConflictEvent):void
+			{
+				vnDetails.pushView(ConflictsView, dsCompany.conflicts);
+			}
+			
+			protected function btnBack_clickHandler(event:MouseEvent):void
+			{
+				vnDetails.popView();
+			}
+			
+			protected function employeeList_activatedHandler(event:Event):void
+			{
+				showBackButton = Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0
+					&&
+					vnDetails.activeView is EmployeeListView;
+			}
+			
+			protected function employeeList_deactivatedHandler(event:Event):void
+			{
+				showBackButton = false;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:ArrayCollection id="companies"/>
+		<s:DataService id="dsCompany" autoCommit="false" destination="crm-company" 
+					   conflict="dsCompany_conflictHandler(event)"/>
+	</fx:Declarations>
+
+	<s:states>
+		<s:State name="landscape" />
+		<s:State name="portrait" />
+	</s:states>
+	
+	<s:actionContent>
+		<s:Button id="btnSave" label="Save"
+				  visible="{lstCompanies.selectedItem}"
+				  includeInLayout="{lstCompanies.selectedItem}"
+				  click="btnSave_clickHandler(event)"
+				  />
+		<s:Button id="btnRevert" label="Revert"
+				  visible="{lstCompanies.selectedItem}"
+				  includeInLayout="{lstCompanies.selectedItem}"
+				  />
+	</s:actionContent>
+	
+	<s:navigationContent>
+		<s:Button id="btnBack" label="Back" click="btnBack_clickHandler(event)"
+				  visible="{showBackButton}"
+				  includeInLayout="{showBackButton}"
+				  styleName="backButton" />
+	</s:navigationContent>
+	
+	<s:HGroup left="10" right="10" top="10" bottom="10" includeIn="landscape">
+		<s:List id="lstCompanies" includeIn="landscape"
+				dataProvider="{companies}"
+				change="lstCompanies_changeHandler(event)"
+				itemRenderer="com.adobe.lcds.samples.crm.views.CompaniesListItemRenderer"
+				width.landscape="50%" height.landscape="100%" 
+				width.portrait="100%" height.portrait="40%" />
+		<s:Spacer width="15" />
+		<s:ViewNavigator id="vnDetails" includeIn="landscape"
+						 firstView="com.adobe.lcds.samples.common.views.EmptyView"
+						 width.landscape="50%" height.landscape="100%"
+						 width.portrait="100%" height.portrait="60%"
+						 />
+	</s:HGroup>
+	
+	<s:VGroup left="10" right="10" top="10" bottom="10" includeIn="portrait">
+		<fx:Reparent includeIn="portrait" target="lstCompanies" />
+		<s:Spacer height="15" />
+		<fx:Reparent includeIn="portrait" target="vnDetails" />
+	</s:VGroup>
+	
+</s:View>

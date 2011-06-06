@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="a035e0fd-b6dc-45f9-b9d6-f27d38dbf75e" projectUUID="a035e0fd-b6dc-45f9-b9d6-f27d38dbf75e" pureCatalystProject="false" sdkVersion="4.5.1" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc" version="15">
+  <projects/>
+  <src/>
+  <swc>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/fds.swc" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/fds.swc" position="2" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/air/airfds.swc" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/air/airfds.swc" position="3" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/locale/{locale}" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/locale/{locale}" position="4" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="/libs" path="/libs" position="1" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/fds.swc" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/fds.swc" position="2" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/air/airfds.swc" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/libs/air/airfds.swc" position="3" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+    <linked location="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/locale/{locale}" path="${LCDS_FLEX_SERVER_ROOT}/WEB-INF/flex/locale/{locale}" position="4" uuid="e121cc4b-3e77-49f4-a85f-d06a47adc6fc"/>
+  </swc>
+  <misc/>
+  <theme/>
+  <mxmlFormattingPrefs groupAttributesByState="true" maxLineWidth="100" mxmlAlignAttributes="true" mxmlAttributeOrder="id,userLabel,includeIn,excludeFrom,visible,x,y,z,left,right,top,bottom,width,height,minWidth,minHeight,maxWidth,maxHeight,label" mxmlKeepAttributeValuesOrganized="true"/>
+</fxpProperties>

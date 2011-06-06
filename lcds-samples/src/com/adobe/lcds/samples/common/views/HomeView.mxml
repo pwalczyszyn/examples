@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		actionBarVisible="false" backKeyPressed="view_backKeyPressedHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			protected function view_backKeyPressedHandler(event:FlexEvent):void
+			{
+				event.preventDefault();
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:TabbedViewNavigator width="100%" height="100%">
+		<s:ViewNavigator width="100%" height="100%" firstView="com.adobe.lcds.samples.crm.views.CrmView" label="CRM" />
+		<s:ViewNavigator width="100%" height="100%" firstView="com.adobe.lcds.samples.dashboard.views.DashboardView" label="Dashboard" />
+		<s:ViewNavigator width="100%" height="100%" firstView="com.adobe.lcds.samples.inventory.views.InventoryView" label="Inventory" />
+		<s:ViewNavigator width="100%" height="100%" firstView="com.adobe.lcds.samples.notes.views.NotesView" label="Notes" />
+	</s:TabbedViewNavigator>
+	
+</s:View>

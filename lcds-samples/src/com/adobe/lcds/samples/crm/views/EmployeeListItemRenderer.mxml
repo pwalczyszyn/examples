@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark"  
+					labelFunction="employeeLabelFunction"
+					messageFunction="employeeMessageFunction">
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.crm.models.Employee;
+			
+			protected function employeeLabelFunction(employee:Employee):String
+			{
+				return employee.firstName + " " + employee.lastName;
+			}
+			
+			protected function employeeMessageFunction(employee:Employee):String
+			{
+				return employee.title + " | " + employee.phone;
+			}
+		]]>
+	</fx:Script>
+	
+</s:IconItemRenderer>

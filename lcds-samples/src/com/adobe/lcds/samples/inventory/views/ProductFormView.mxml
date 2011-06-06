@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		title="{product.name}"
+		creationComplete="view_creationCompleteHandler(event)"
+		viewActivate="view_viewActivateHandler(event)"
+		viewDeactivate="view_viewDeactivateHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.lcds.samples.inventory.models.Product;
+			
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			import mx.events.ValidationResultEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			import spark.events.ViewNavigatorEvent;
+			
+			[Bindable]
+			protected var product:Product;
+			
+			[Bindable]
+			protected var serverName:String;
+			
+			[Bindable]
+			protected var serverPort:String;
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				product = data as Product;
+				
+				serverName = FlexGlobals.topLevelApplication.serverName;
+				serverPort = FlexGlobals.topLevelApplication.serverPort;
+				
+				srv.channelSet = FlexGlobals.topLevelApplication.remotingChannels;
+			}
+
+			protected function view_viewActivateHandler(event:ViewNavigatorEvent):void
+			{
+				NativeApplication.nativeApplication.addEventListener(KeyboardEvent.KEY_DOWN, view_keyDownHandler);
+			}
+
+			protected function view_viewDeactivateHandler(event:ViewNavigatorEvent):void
+			{
+				NativeApplication.nativeApplication.removeEventListener(KeyboardEvent.KEY_DOWN, view_keyDownHandler);
+			}
+
+			protected function create_resultHandler(event:ResultEvent):void
+			{
+				product = event.result as Product;
+				title = product.name;
+				
+				navigator.popView();
+			}
+			
+			protected function btnSave_clickHandler(event:MouseEvent):void
+			{
+				if (nameValidator.validate().type == ValidationResultEvent.INVALID) 
+					return;
+				
+				product.name = productName.text;
+				product.category = category.text;
+				product.price = Number(price.text);
+				product.qtyInStock = parseInt(qtyInStock.text);
+				product.image = image.text;
+				product.description = description.text;
+				
+				if (product.productId > 0)
+					srv.update(product);
+				else
+					srv.create(product);
+			}
+			
+			protected function update_resultHandler(event:ResultEvent):void
+			{
+				navigator.popView();
+			}
+			
+			protected function btnBack_clickHandler(event:MouseEvent):void
+			{
+				navigator.popView();
+			}
+			
+			protected function view_keyDownHandler(event:KeyboardEvent):void
+			{
+				if (event.keyCode == Keyboard.BACK)
+					navigator.popView();
+				
+				if (event.keyCode == Keyboard.MENU)
+					FlexGlobals.topLevelApplication.viewMenuOpen = true;
+			}
+
+			protected var removed:Boolean = false;
+			
+			protected function remove_resultHandler(event:ResultEvent):void
+			{
+				removed = true;
+				navigator.popView();
+			}
+
+			override public function createReturnObject():Object
+			{
+				return removed ? product : null;
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:StringValidator id="nameValidator" source="{productName}" property="text" minLength="1"/>
+		<s:RemoteObject id="srv" destination="product">
+			<s:method name="create" result="create_resultHandler(event)"/>
+			<s:method name="remove" result="remove_resultHandler(event)"/>
+			<s:method name="update" result="update_resultHandler(event)"/>
+		</s:RemoteObject>
+	</fx:Declarations>
+	
+	<s:navigationContent>
+		<s:Button id="btnBack" label="Back" click="btnBack_clickHandler(event)"
+				  visible="{Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0}"
+				  includeInLayout="{Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0}"
+				  styleName="backButton" />
+	</s:navigationContent>
+	
+	<s:actionContent>
+		<!--
+		<s:Button id="btnRemove" label="Remove" click="srv.remove(product)"/>
+		-->
+		<s:Button id="btnSave" label="Save" click="btnSave_clickHandler(event)"/>
+	</s:actionContent>
+	
+	<s:Image id="imgProduct" source="http://{serverName}:{serverPort}/lcds-samples/images/{product.image}" verticalCenter="0" horizontalCenter="{width * 0.25}" />
+	
+	<s:Form verticalCenter="0" horizontalCenter="{-width * 0.25}">
+		<s:FormItem label="Id">
+			<s:TextInput id="productId" text="{product.productId}" enabled="false"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Name" required="true">
+			<s:TextInput id="productName" text="{product.name}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Category">
+			<s:TextInput id="category" text="{product.category}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Image">
+			<s:TextInput id="image" text="{product.image}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Price">
+			<s:TextInput id="price" text="{product.price}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="In Stock">
+			<s:TextInput id="qtyInStock" text="{product.qtyInStock}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Description" width="100%">
+			<s:TextArea id="description" text="{product.description}" width="100%" height="200"/>
+		</s:FormItem>
+	</s:Form>
+	
+</s:View>

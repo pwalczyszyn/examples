@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="Select LCDS server" creationComplete="view_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			import mx.events.FlexEvent;
+			
+			import spark.managers.PersistenceManager;
+			
+			protected var pm:PersistenceManager;
+			 
+			protected function btnConnect_clickHandler(event:MouseEvent):void
+			{
+				if (rdbLocalLCDS.selected)
+				{
+					if (Validator.validateAll(validators).length > 0)
+						return;
+					
+					pm.setProperty("serverName", txtServerName.text);
+					pm.setProperty("serverPort", txtServerPort.text);
+					FlexGlobals.topLevelApplication.serverName = txtServerName.text;
+					FlexGlobals.topLevelApplication.serverPort = txtServerPort.text;
+				}
+				navigator.pushView(HomeView);
+			}
+			
+			protected function view_creationCompleteHandler(event:FlexEvent):void
+			{
+				if (!pm)
+				{
+					pm = new PersistenceManager;
+					pm.load();
+					var serverName:String = pm.getProperty("serverName") as String;
+					if (serverName)
+						txtServerName.text = serverName;
+					var serverPort:String = pm.getProperty("serverPort") as String;
+					if (serverPort)
+						txtServerPort.text = serverPort;
+				}
+				else
+				{
+					txtServerName.text = "localhost";
+					txtServerPort.text = "8400";
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<fx:Array id="validators">
+			<mx:Validator id="serverNameValidator" required="true"
+						  source="{txtServerName}" property="text" />
+			<mx:Validator id="serverPortValidator" required="true"
+						  source="{txtServerPort}" property="text" />
+		</fx:Array>
+	</fx:Declarations>
+	
+	<s:VGroup gap="30" horizontalAlign="left" horizontalCenter="0" verticalCenter="0">
+		
+		<s:RadioButton id="rdbRemoteLCDS" label="Remote LCDS server instance" 
+					   groupName="grpServerInstance" selected="true"/>
+		
+		<s:RadioButton id="rdbLocalLCDS" label="Local LCDS server instance" 
+					   groupName="grpServerInstance" />
+		
+		<s:Form>
+			<s:FormItem label="Server name:" enabled="{rdbLocalLCDS.selected}" required="true">
+				<s:TextInput id="txtServerName" width="275"/>
+			</s:FormItem>
+			<s:FormItem label="Server port:" enabled="{rdbLocalLCDS.selected}" required="true">
+				<s:TextInput id="txtServerPort" width="275"/>
+			</s:FormItem>
+			<s:FormItem>
+				<s:Button id="btnConnect" label="Connect" click="btnConnect_clickHandler(event)"/>
+			</s:FormItem>
+		</s:Form>
+	</s:VGroup>
+	
+</s:View>

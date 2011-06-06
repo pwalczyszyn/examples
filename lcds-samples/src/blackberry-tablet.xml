@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<qnx>
+   <author>Piotr Walczyszyn</author>
+   <authorId>gYAAgBc2wwTzQ-D7qMWUFZQXjvo</authorId>
+   <permission>access_internet</permission>
+
+   <icon>
+      <image>com/adobe/lcds/samples/common/assets/icons/icon_086.png</image>
+   </icon>
+</qnx>

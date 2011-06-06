@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+							xmlns:s="library://ns.adobe.com/flex/spark"
+							applicationDPI="320"
+							firstView="com.adobe.lcds.samples.common.views.EndpointView">
+	
+	<fx:Style source="Styles.css" />
+
+	<fx:Declarations>
+		<fx:String id="serverName">push.flex.org</fx:String>
+		<fx:String id="serverPort">80</fx:String>
+		<fx:String id="rtmpServerPort">2037</fx:String>
+		
+		<s:ChannelSet id="remotingChannels">
+			<s:AMFChannel url="http://{serverName}:{serverPort}/lcds-samples/messagebroker/amf" />
+		</s:ChannelSet>
+		
+		<s:ChannelSet id="messagingChannels">
+			<s:RTMPChannel id="rtmpChannel" url="rtmp://{serverName}:{rtmpServerPort}" />
+			<s:StreamingAMFChannel id="streaming" url="http://{serverName}:{serverPort}/lcds-samples/messagebroker/streamingamf" />
+			<s:AMFChannel id="amfChannel" url="http://{serverName}:{serverPort}/lcds-samples/messagebroker/amfpolling" />
+		</s:ChannelSet>
+	</fx:Declarations>
+	
+</s:ViewNavigatorApplication>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" 
+					   xmlns:views="com.riaspace.examples.oauth.views.*"
+					   showStatusBar="false"
+					   applicationComplete="windowedApplication_applicationCompleteHandler(event)">
+	
+	<fx:Style source="Style.css"/>
+	
+	<fx:Script>
+		<![CDATA[
+			import com.riaspace.examples.oauth.views.AuthorizationWindow;
+			
+			import mx.controls.Alert;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			
+			import org.iotashan.oauth.IOAuthSignatureMethod;
+			import org.iotashan.oauth.OAuthConsumer;
+			import org.iotashan.oauth.OAuthRequest;
+			import org.iotashan.oauth.OAuthSignatureMethod_HMAC_SHA1;
+			import org.iotashan.oauth.OAuthToken;
+			import org.iotashan.utils.OAuthUtil;
+			import org.iotashan.utils.URLEncoding;
+			
+			protected static const GET_REQUEST_TOKEN_URL:String = "https://www.google.com/accounts/OAuthGetRequestToken";
+			
+			protected static const AUTHORIZE_TOKEN_URL:String = "https://www.google.com/accounts/OAuthAuthorizeToken";
+			
+			protected static const GET_ACCESS_TOKEN_URL:String = "https://www.google.com/accounts/OAuthGetAccessToken";
+			
+			protected static const ACCESS_TOKEN_STORE:String = "ACCESS_TOKEN_STORE";
+			
+			protected var requestToken:OAuthToken
+			
+			public var accessToken:OAuthToken
+			
+			// OAuthConsumer with key and secret, in case of Google desktop applications
+			// it is anonymous and anonymous
+			public var consumer:OAuthConsumer = new OAuthConsumer("anonymous", "anonymous");
+			
+			// Signature method
+			public var signature:IOAuthSignatureMethod = new OAuthSignatureMethod_HMAC_SHA1();
+			
+			protected function windowedApplication_applicationCompleteHandler(event:FlexEvent):void
+			{
+				// Positioning window in center of the screeen
+				nativeWindow.x = (Capabilities.screenResolutionX - nativeWindow.width) / 2;
+				nativeWindow.y = (Capabilities.screenResolutionY - nativeWindow.height) / 2;
+				
+				// Getting access token from EncryptedLocalStore 
+				var accessTokenBytes:ByteArray = EncryptedLocalStore.getItem(ACCESS_TOKEN_STORE);
+				if (accessTokenBytes)
+				{
+					// If access token is available reading it
+					var accessTokenObj:Object = accessTokenBytes.readObject();
+					accessToken = new OAuthToken(accessTokenObj.key, accessTokenObj.secret);
+					
+					// switching to authorized state
+					currentState = "authorized";
+				}
+			}
+
+			protected function btnObtainRequestToken_clickHandler(event:MouseEvent):void
+			{
+				// Url where to redirect the user when authorization is successful
+				var oauth_callback:String = AUTHORIZE_TOKEN_URL;
+				// Scope defines what services user will gain access to
+				var scope:String = "https://picasaweb.google.com/data/";
+				// Additional param specifying the name of the app to display to the user
+				var xoauth_displayname:String = "OAuth Example";
+				
+				// Creating new oauth request to get request token 
+				var oauthRequest:OAuthRequest = 
+					new OAuthRequest(
+						OAuthRequest.HTTP_MEHTOD_POST, GET_REQUEST_TOKEN_URL, 
+						{oauth_callback : oauth_callback, scope : scope, xoauth_displayname : xoauth_displayname}, 
+						consumer, null
+					);
+				
+				// Creating new url request
+				var request:URLRequest = new URLRequest(oauthRequest.requestURL);
+				// Adding signed header with request parameters
+				request.requestHeaders.push(oauthRequest.buildRequest(signature, OAuthRequest.RESULT_TYPE_HEADER));
+				// The request method is POST, it could also be GET or HEAD
+				request.method = URLRequestMethod.POST;
+				// Passing scope and xoauth_displayname params as POST data
+				request.data = new URLVariables("scope=" + scope + "&xoauth_displayname=" + xoauth_displayname);
+				
+				// Invoking remote service with URLLoader
+				var loader:URLLoader = new URLLoader;
+				loader.addEventListener(Event.COMPLETE, requestToken_completeHandler);
+				loader.addEventListener(IOErrorEvent.IO_ERROR, requestToken_ioErrorHandler);
+				loader.load(request);
+			}
+
+			protected function requestToken_completeHandler(event:Event):void
+			{
+				// Parsing received data and reading it into request OAuthToken
+				requestToken = OAuthUtil.getTokenFromResponse(URLLoader(event.currentTarget).data);
+				// This is a workaround for none url-safe characters sent by Google service
+				requestToken.key = URLEncoding.decode(requestToken.key);
+				// This is a workaround for none url-safe characters sent by Google service
+				requestToken.secret = URLEncoding.decode(requestToken.secret);
+				
+				// Dispalying popup window with embeded HTML component
+				authWindowPopUp.displayPopUp = true;
+				// Redirecting HTML component to proper URL with user authorization process
+				authWindow.authorizeToken(AUTHORIZE_TOKEN_URL, requestToken);
+			}
+
+			protected function authWindow_closeHandler(event:CloseEvent):void
+			{
+				// Hiding authWindowPopUp window
+				authWindowPopUp.displayPopUp = false;
+			}
+			
+			protected function requestToken_ioErrorHandler(event:IOErrorEvent):void
+			{
+				// Notyfying the user about error during request token request
+				Alert.show("Error obtaining Request Token: " + URLLoader(event.currentTarget).data, "Error!");
+				// Changing state back to obtainRequestToken
+				currentState = "obtainRequestToken";
+			}
+
+			/**
+			 * User authorization was successfully completed.
+			 */
+			protected function authWindow_completeHandler(event:Event):void
+			{
+				// Hiding authWindowPopUp window
+				authWindowPopUp.displayPopUp = false;
+				// Changing state back to obtainAccessToken with a progress bar
+				currentState = "obtainAccessToken";
+				
+				// Creating new oauth request to get access token
+				var oauthRequest:OAuthRequest = 
+					new OAuthRequest(
+						OAuthRequest.HTTP_MEHTOD_POST, GET_ACCESS_TOKEN_URL,
+						{oauth_verifier : authWindow.oauth_verifier}, consumer, requestToken
+					);
+				
+				// Creating new url request
+				var request:URLRequest = new URLRequest(oauthRequest.requestURL);
+				// Adding signed header with request parameters
+				request.requestHeaders.push(oauthRequest.buildRequest(signature, OAuthRequest.RESULT_TYPE_HEADER));
+				// The request method is POST, it could also be GET or HEAD
+				request.method = URLRequestMethod.POST;
+				
+				// Invoking remote service with URLLoader
+				var loader:URLLoader = new URLLoader;
+				loader.addEventListener(Event.COMPLETE, accessToken_completeHandler);
+				loader.addEventListener(IOErrorEvent.IO_ERROR, accessToken_ioErrorHandler);
+				loader.load(request);
+			}
+
+			protected function accessToken_completeHandler(event:Event):void
+			{
+				// Parsing received data and reading it into access OAuthToken
+				accessToken = OAuthUtil.getTokenFromResponse(URLLoader(event.currentTarget).data);
+				// This is a workaround for none url-safe characters sent by Google service
+				accessToken.key = URLEncoding.decode(accessToken.key);
+				// This is a workaround for none url-safe characters sent by Google service
+				accessToken.secret = URLEncoding.decode(accessToken.secret);
+				
+				// Creating ByteArray to store access token
+				var accessTokenBytes:ByteArray = new ByteArray;
+				// Writing access token object into a ByteArray
+				accessTokenBytes.writeObject(accessToken);
+				// Storing access token bytes in EncryptedLocalStore
+				EncryptedLocalStore.setItem(ACCESS_TOKEN_STORE, accessTokenBytes);
+				
+				// Switching state to authorized
+				currentState = "authorized";
+			}
+
+			protected function accessToken_ioErrorHandler(event:IOErrorEvent):void
+			{
+				// Notyfying the user about error during access token request
+				Alert.show("Error obtaining Access Token: " + URLLoader(event.currentTarget).data, "Error!");
+				// Switching state back to obtainRequestToken
+				currentState = "obtainRequestToken";
+			}
+
+			protected function btnLogout_clickHandler(event:MouseEvent):void
+			{
+				// Removing stored access token from EncryptedLocalStore
+				EncryptedLocalStore.removeItem(ACCESS_TOKEN_STORE);
+				// Switching state back to obtainRequestToken
+				currentState = "obtainRequestToken";
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="obtainRequestToken"/>
+		<s:State name="obtainAccessToken"/>
+		<s:State name="authorized" enterState="albumsView.loadAlbums()"/>
+	</s:states>
+	
+	<s:HGroup top="10" left="10" verticalAlign="middle">
+		<mx:Image source="@Embed(source='/assets/ic_logo.png')" />
+		<s:Label text="OAuth with Flash/Flex applications" fontWeight="bold" fontSize="16" />
+	</s:HGroup>
+	
+	<s:Button id="btnObtainRequestToken" label="Authorize with Google" click="btnObtainRequestToken_clickHandler(event)"
+			  verticalCenter="0" horizontalCenter="0" includeIn="obtainRequestToken" 
+			  skinClass="com.riaspace.examples.oauth.skins.AuthorizeTokenButtonSkin"/>
+	
+	<s:PopUpAnchor id="authWindowPopUp" popUpPosition="center" includeIn="obtainRequestToken"
+				   verticalCenter="0" horizontalCenter="0">
+		
+		<views:AuthorizationWindow id="authWindow" width="600" height="550" 
+								   close="authWindow_closeHandler(event)"
+								   complete="authWindow_completeHandler(event)"/>
+		
+	</s:PopUpAnchor>
+	
+	<mx:ProgressBar id="prgObtainingAccessToken" label="Obtaining Access Token" indeterminate="true"
+					verticalCenter="0" horizontalCenter="0" includeIn="obtainAccessToken" />
+	
+	<s:Label id="btnLogout" text="Log out" click="btnLogout_clickHandler(event)" 
+			 buttonMode="true" mouseChildren="false"
+			 textDecoration="underline" top="10" right="10" includeIn="authorized" />
+
+	<views:AlbumsView id="albumsView" top="80" right="10" left="10" bottom="10" includeIn="authorized" />
+	
+</s:WindowedApplication>

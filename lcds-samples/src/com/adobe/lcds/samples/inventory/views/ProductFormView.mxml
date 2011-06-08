@@ -116,11 +116,6 @@
 		</s:RemoteObject>
 	</fx:Declarations>
 	
-	<s:states>
-		<s:State name="landscape" />
-		<s:State name="portrait" />
-	</s:states>
-	
 	<s:navigationContent>
 		<s:Button id="btnBack" label="Back" click="btnBack_clickHandler(event)"
 				  visible="{Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0}"
@@ -135,51 +130,36 @@
 		<s:Button id="btnSave" label="Save" click="btnSave_clickHandler(event)"/>
 	</s:actionContent>
 	
-	<s:Group left="10" top="10" right="10" bottom="10">
-		<s:layout.landscape>
-			<s:HorizontalLayout verticalAlign="middle"/>
-		</s:layout.landscape>
-		<s:layout.portrait>
-			<s:VerticalLayout horizontalAlign="center" />
-		</s:layout.portrait>
+	<s:Image id="imgProduct" source="http://{serverName}:{serverPort}/lcds-samples/images/{product.image}" verticalCenter="0" horizontalCenter="{width * 0.25}" />
 	
-		<s:Scroller height.landscape="100%" width.landscape="50%" height.portrait="50%" width.portrait="100%">
-			<s:Group width="100%" height="100%">
-				<s:Form>
-					<s:FormItem label="Id">
-						<s:TextInput id="productId" text="{product.productId}" enabled="false"/>
-					</s:FormItem>
-					
-					<s:FormItem label="Name" required="true">
-						<s:TextInput id="productName" text="{product.name}" />
-					</s:FormItem>
-					
-					<s:FormItem label="Category">
-						<s:TextInput id="category" text="{product.category}" />
-					</s:FormItem>
-					
-					<s:FormItem label="Image">
-						<s:TextInput id="image" text="{product.image}" />
-					</s:FormItem>
-					
-					<s:FormItem label="Price">
-						<s:TextInput id="price" text="{product.price}" />
-					</s:FormItem>
-					
-					<s:FormItem label="In Stock">
-						<s:TextInput id="qtyInStock" text="{product.qtyInStock}" />
-					</s:FormItem>
-					
-					<s:FormItem label="Description">
-						<s:TextArea id="description" text="{product.description}" height="200" />
-					</s:FormItem>
-				</s:Form>
-			</s:Group>
-		</s:Scroller>
+	<s:Form verticalCenter="0" horizontalCenter="{-width * 0.25}">
+		<s:FormItem label="Id">
+			<s:TextInput id="productId" text="{product.productId}" enabled="false"/>
+		</s:FormItem>
 		
-		<s:Spacer width="25%" height="25%" />
+		<s:FormItem label="Name" required="true">
+			<s:TextInput id="productName" text="{product.name}"/>
+		</s:FormItem>
 		
-		<s:Image id="imgProduct" source="http://{serverName}:{serverPort}/lcds-samples/images/{product.image}" />
-	</s:Group>
+		<s:FormItem label="Category">
+			<s:TextInput id="category" text="{product.category}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Image">
+			<s:TextInput id="image" text="{product.image}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Price">
+			<s:TextInput id="price" text="{product.price}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="In Stock">
+			<s:TextInput id="qtyInStock" text="{product.qtyInStock}"/>
+		</s:FormItem>
+		
+		<s:FormItem label="Description" width="100%">
+			<s:TextArea id="description" text="{product.description}" width="100%" height="200"/>
+		</s:FormItem>
+	</s:Form>
 	
 </s:View>

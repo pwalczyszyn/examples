@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   xmlns:helpers="com.riaspace.helpers.*"
+					   preinitialize="windowedApplication_preinitializeHandler(event)"
+					   creationComplete="windowedApplication_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.errors.ItemPendingError;
+			import mx.events.FlexEvent;
+			
+			protected var conn:SQLConnection;
+			
+			protected const PAGE_SIZE:int = 50;
+			
+			protected function windowedApplication_preinitializeHandler(event:FlexEvent):void
+			{
+				// Creating inmemory database
+				conn = new SQLConnection;
+				conn.open();
+				
+				// Creating data_tab table
+				var createStmt:SQLStatement = new SQLStatement;
+				createStmt.sqlConnection = conn;
+				createStmt.text = "CREATE TABLE data_tab (value_col TEXT)";
+				createStmt.execute();
+				
+				// Inserting 1000 records to the table
+				var insertStmt:SQLStatement = new SQLStatement;
+				insertStmt.sqlConnection = conn;
+				insertStmt.text = "INSERT INTO data_tab VALUES (?)";
+
+				for (var i:int = 1; i <= 1000; i++)
+				{
+					insertStmt.clearParameters();
+					insertStmt.parameters[0] = "value " + i;
+					insertStmt.execute();
+				}
+			}
+
+			protected function windowedApplication_creationCompleteHandler(event:FlexEvent):void
+			{
+				// STEP 1 - query rows count
+				var stmt:SQLStatement = new SQLStatement;
+				stmt.sqlConnection = conn;
+				stmt.text = "SELECT count(*) as rowsCount FROM data_tab";
+				stmt.execute();
+				
+				var result:SQLResult = stmt.getResult();
+				
+				// STEP 2 - set PagedArrayList.length equal queried rows count 
+				pagedArrayList.length = result.data[0].rowsCount;
+				
+				// STEP 3 - fetch actual data starting from 0 offset (1st row)
+				fetchRows(0);
+			}
+
+			protected function fetchRows(offset:int):void
+			{
+				// Fetch data rows with specified limit which is our requested page size
+				// and offset passed as parameter
+				var stmt:SQLStatement = new SQLStatement;
+				stmt.sqlConnection = conn;
+				stmt.text = "SELECT * FROM data_tab LIMIT :limit OFFSET :offset";
+				stmt.parameters[":limit"] = PAGE_SIZE;
+				stmt.parameters[":offset"] = offset;
+				stmt.execute();
+				
+				var result:SQLResult = stmt.getResult();
+				if (result && result.data)
+				{
+					for(var i:int = 0; i < result.data.length; i++)
+					{
+						// Setting return row at offset + i position
+						pagedArrayList.setItemAt(result.data[i], offset + i);
+					}
+				}
+			}
+			
+			private function createPendingItemFunctionHandler(index:int, ipe:ItemPendingError):Object
+			{
+				// In case synchronous database mode is used fetchRows function should be called
+				// after return from this function. With asynchronous mode fetchRows function can
+				// be called directly.
+				callLater(fetchRows, [index]);
+				
+				// Returning a message to display
+				return "List items are being fetched from database...";
+			}
+
+			protected function pagedArrayList_initializeHandler(event:FlexEvent):void
+			{
+				// NOTICE: this is a workaround for a Flex bug that causes invalidIndex error
+				// in LinearLayoutVector. It all works well when asyncListView.list property
+				// is set after pagedArrayList is initialized and its length property is set.
+				asyncListView.list = pagedArrayList;
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<helpers:PagedArrayList id="pagedArrayList" initialize="pagedArrayList_initializeHandler(event)" />
+	</fx:Declarations>
+	
+	<s:List width="100%" height="100%" labelField="value_col">
+		<s:AsyncListView id="asyncListView" createPendingItemFunction="createPendingItemFunctionHandler" />
+	</s:List>
+	
+</s:WindowedApplication>

@@ -118,8 +118,8 @@
 	
 	<s:navigationContent>
 		<s:Button id="btnBack" label="Back" click="btnBack_clickHandler(event)"
-				  visible="{Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0}"
-				  includeInLayout="{Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0}"
+				  visible="{Capabilities.manufacturer.toLowerCase().indexOf('android') == -1}"
+				  includeInLayout="{Capabilities.manufacturer.toLowerCase().indexOf('android') == -1}"
 				  styleName="backButton" />
 	</s:navigationContent>
 	

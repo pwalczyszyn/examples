@@ -54,7 +54,7 @@
 			
 			protected function employeeList_activatedHandler(event:Event):void
 			{
-				showBackButton = Capabilities.manufacturer.toLowerCase().indexOf('ios') >= 0
+				showBackButton = Capabilities.manufacturer.toLowerCase().indexOf('android') == -1
 					&&
 					vnDetails.activeView is EmployeeListView;
 			}

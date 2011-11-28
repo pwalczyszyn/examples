@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Style source="Styles.css" />
+	
+	<fx:Declarations>
+		<fx:XML id="evangelists" source="assets/evangelists.xml" />
+	</fx:Declarations>
+	
+	<s:List left="10" top="10" right="10" bottom="10"
+			itemRenderer="components.EvangelistItemRenderer"
+			contentBackgroundColor="#ffffff">
+			<s:layout>
+				<s:TileLayout useVirtualLayout="true" columnAlign="justifyUsingWidth"
+							  verticalGap="15" horizontalGap="15" />
+			</s:layout>
+		<s:dataProvider>
+			<s:XMLListCollection source="{evangelists.evangelist}" />
+		</s:dataProvider>
+	</s:List>
+	
+</s:Application>

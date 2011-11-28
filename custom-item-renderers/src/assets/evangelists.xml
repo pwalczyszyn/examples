@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evangelists>
+	<evangelist>
+		<name>Allen Ellison</name>
+		<jobtitle>Strategic solutions</jobtitle>
+		<location>San Francisco, CA</location>
+		<bio><![CDATA[No bio available at this time. Please check back later.]]></bio>
+		<profileimage>assets/avatars/allenellison.jpg</profileimage>
+		<social>
+			<blog>http://photonburst.wordpress.com/</blog>
+			<blogfeed>http://photonburst.wordpress.com/feed/</blogfeed>
+			<twitter>photonburst</twitter>
+			<twitterid>14913869</twitterid>
+			<flickr>http://www.flickr.com/photos/photonburst/</flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	<evangelist>
+		<name>Allen Partridge</name>
+		<jobtitle>eLearning evangelist</jobtitle>
+		<location>Pennsylvania</location>
+		<bio><![CDATA[Dr. Allen Partridge is an eLearning Evangelist for Adobe. In addition to his work for Adobe Systems, he continues to serve on the doctoral faculty in the Communications Media and Instructional Technology program at Indiana University of Pennsylvania. Allen has written several books and a host of articles on topics ranging from 3D game development to Instructional Design for new technologies. He is active in explorations of Immersive Learning as well as traditional multimedia enhanced eLearning and rapid eLearning. Allen works closely with the eLearning Suite and Captivate teams at Adobe, providing a channel to customer needs and concerns and helping facilitate communication among team members.]]></bio>
+		<profileimage>assets/avatars/allenpartridge.jpg</profileimage>
+		<social>
+			<blog>http://blogs.adobe.com/captivate/</blog>
+			<blogfeed>http://blogs.adobe.com/captivate/feed/</blogfeed>
+			<twitter>adobeElearning</twitter>
+			<twitterid>95409613</twitterid>
+			<flickr></flickr>
+			<facebook>http://www.facebook.com/adobecaptivate</facebook>
+			<linkedin>http://www.linkedin.com/in/doctorpartridge</linkedin>
+			<vimeo></vimeo>
+			<youtube>http://www.youtube.com/adobeelearning/</youtube>
+		</social>
+	</evangelist>
+
+	<evangelist>
+          <name>Andrew Trice</name>
+          <jobtitle>Enterprise Evangelist</jobtitle>
+          <location>Washington, DC Metro Area</location>
+          <bio><![CDATA[Andrew Trice is an Enterprise Evangelist with Adobe Systems. Andrew brings to the table more than a decade of experience designing, implementing, and delivering rich applications for the web, desktop, and mobile devices. He is an experienced architect, team leader, accomplished speaker, and published author, specializing in object oriented principles, mobile development, realtime data systems, GIS, and data visualization.]]> </bio>
+          <profileimage>assets/avatars/trice.jpg</profileimage>
+          <social>
+               <blog>http://www.tricedesigns.com/</blog>
+               <blogfeed>http://www.tricedesigns.com/?feed=rss</blogfeed>
+               <twitter>andytrice</twitter>
+               <twitterid>49749552</twitterid>
+               <flickr></flickr>
+               <facebook></facebook>
+               <linkedin></linkedin>
+               <vimeo></vimeo>
+               <youtube></youtube>
+          </social>
+     </evangelist>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<evangelist>
+		<name>Anne Kathrine Petteroe</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Oslo, Norway</location>
+		<bio><![CDATA[Anne Kathrine Petteroe is an Enterprise Platform Evangelist at Adobe.
+She focuses on rich user experiences in the enterprise space and work with the enterprise use of Adobe's Flash Platform and evangelise the use of AIR, Flex and LiveCycle, focusing largely on SAP.<br/><br/>In her previous role she worked as an SAP consultant, focusing on the solutions from the SAP-Adobe alliance. (Flex/Flash Uis, RIAs and Interactive Forms)]]></bio>
+		<profileimage>assets/avatars/annekatherinepetteroe.jpg</profileimage>
+		<social>
+			<blog>http://www.yojibee.com/</blog>
+			<blogfeed>http://www.yojibee.com/feed</blogfeed>
+			<twitter>yojibee</twitter>
+			<twitterid>5463742</twitterid>
+			<flickr>http://www.flickr.com/photos/yojibee/</flickr>
+			<facebook></facebook>
+			<linkedin>http://www.linkedin.com/in/yojibee</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Ben Forta</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Detroit, MI</location>
+		<bio><![CDATA[I am Adobe Systems Inc's Director of Platform Evangelism. In that capacity I get to spend a considerable amount of time talking and writing about Adobe products (with an emphasis on ColdFusion and Flex), and providing feedback to help shape the future direction of the products.<br/><br/>By the way, if you are not yet a ColdFusion user, you should be. It is an incredible product, and is truly deserving of all the praise it has been receiving.<br/><br/>In a prior life I was a ColdFusion customer (I wrote one of the first large high visibility web sites using the product) and was so impressed I ended up working for the company that created it (Allaire).]]></bio>
+		<profileimage>assets/avatars/benforta.gif</profileimage>
+		<social>
+			<blog>http://www.forta.com/blog</blog>
+			<blogfeed>http://forta.com/blog/rss.cfm</blogfeed>
+			<twitter>benforta</twitter>
+			<twitterid>28591298</twitterid>
+			<flickr>http://www.flickr.com/photos/benforta</flickr>
+			<facebook></facebook>
+			<linkedin>http://www.linkedin.com/in/benforta</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Christophe Coenraets</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Boston, MA</location>
+		<bio><![CDATA[Christophe Coenraets is a Technical Evangelist for Adobe where he focuses on Rich Internet Applications and Enterprise Integration. He has been working on Flex since the early days of the product in 2003.<br/><br/>In his previous role at Macromedia, Christophe worked on JRun, the company's J2EE application server. Before joining Macromedia, Christophe was managing Java and Internet applications Evangelism at Sybase and Powersoft. Christophe has been a regular speaker at conferences worldwide for the last 15 years.]]></bio>
+		<profileimage>assets/avatars/christophecoenraets.jpg</profileimage>
+		<social>
+			<blog>http://coenraets.org/blog/</blog>
+			<blogfeed>http://coenraets.org/blog/feed/</blogfeed>
+			<twitter>ccoenraets</twitter>
+			<twitterid>29869024</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Duane Nickull</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Vancouver, Canada</location>
+		<bio><![CDATA[Duane Chaos - lifelong musician, cynic, traveler, athlete, author and first class antagonist. Punk lives through ideas and actions, not looks. What can you do to disrupt something? Challenge that which breeds complacency. http://www.myspace.com/22ndcentury I work for Adobe Systems and love it.]]></bio>
+		<profileimage>assets/avatars/duanenickull.png</profileimage>
+		<social>
+			<blog>http://technoracle.blogspot.com/</blog>
+			<blogfeed>http://technoracle.blogspot.com/feeds/posts/default?alt=rss</blogfeed>
+			<twitter>duanechaos</twitter>
+			<twitterid>7766562</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Enrique Duvos</name>
+		<jobtitle>Gaming evangelist</jobtitle>
+		<location>Barcelona, Spain</location>
+		<bio><![CDATA[As Group Manager of Flash Platform Evangelism in EMEA, my role is to manage the Adobe elite team of technical evangelists as they drive adoption and build thriving communities. Prior to the Adobe merger I was part of the Macromedia technical sales team specialized in the company's enterprise portfolio of technologies.<br/><br/>With a major in Computer Science and a Masters in distributed applications, my background includes more than 12 years in the Software industry, five of them in R&D as Senior Software Architect designing and developing J2EE enterprise solutions for Macromedia US.]]></bio>
+		<profileimage>assets/avatars/enriqueduvos.jpg</profileimage>
+		<social>
+			<blog>http://www.duvos.com/</blog>
+			<blogfeed>http://www.duvos.com/?feed=rss2</blogfeed>
+			<twitter>eduvos</twitter>
+			<twitterid>11936392</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Greg Rewis</name>
+		<jobtitle>Open Web evangelist</jobtitle>
+		<location>Some airport somewhere</location>
+		<bio><![CDATA[Greg Rewis is the Principal Evangelist for Creative Suite Web Premium at Adobe Systems. With over 20 years of computer industry experience, Greg spends in excess of 200 days of the year on the road, talking with customers, giving product demonstrations at trade shows and seminars, and speaking at industry conferences.]]></bio>
+		<profileimage>assets/avatars/gregrewis.jpg</profileimage>
+		<social>
+			<blog>http://blog.assortedgarbage.com/</blog>
+			<blogfeed>http://blog.assortedgarbage.com/?feed=rss</blogfeed>
+			<twitter>garazi</twitter>
+			<twitterid>662533</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Greg Wilson</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Tampa, FL</location>
+		<bio><![CDATA[I have three passions - Technology, Photography, and Aviation<br/><br/>Technology - My LinkedIn profile shows my history.  I've been lucky enough to have been involved in all sorts of technologies.  For the past 6 years I've been with Adobe speaking at events, blogging, building tools, helping developers and learning something new every single day.  I also manage a team of geniuses (each of whom are clearly smarter than me!) that is known as the Adobe Enterprise Platform Evangelist Team.<br/><br/>Photography and Aviation - My Aerial photography website - I figured out a way to combine two passions into something that covers the cost of both.  I have shot for more than 300 customers during the past 5 years.  More of my photography can be found on my SmugMug page.]]></bio>
+		<profileimage>assets/avatars/gregwilson.jpg</profileimage>
+		<social>
+			<blog>http://gregsramblings.com/</blog>
+			<blogfeed>http://gregsramblings.com/feed/</blogfeed>
+			<twitter>gregorywilson</twitter>
+			<twitterid>10520572</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Harish Sivaramakrishnan</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Harish Sivaramakrishnan (flexgeek) is a Computer Scientist & Platform Evangelist at Adobe Systems. Harish has over 10 years of experience working on the Adobe Flash Platform. He is a hardcore UI / UX enthusiast and strongly believes that building great user experiences is the key for the success of any application. Prior to joining  the evangelist role, Harish worked in the Flex Engineering team @Macromedia and Adobe for the Flex 2.0 � Flex 3.0 releases. Harish also worked in the Adobe Media Player team implementing the Digital Rights Management features to AMP (now known as OSMF)Harish currently lives in Banglore, India with his wife Asha (Asha is a Coldfusion geek, working in the Coldfusion Engineering team @ Adobe) Harish is a performing musician and sound engineer. Harish performs with his Rock- fusion band Agam and also runs Studio F6 � a recording / sound production studio.]]></bio>
+		<profileimage>assets/avatars/harish.jpg</profileimage>
+		<social>
+			<blog>http://blog.flexgeek.in/</blog>
+			<blogfeed>http://blog.flexgeek.in/feed/</blogfeed>
+			<twitter>hsivaram</twitter>
+			<twitterid>14214982</twitterid>
+			<flickr></flickr>
+			<facebook>http://facebook.com/harishsivaramakrishnan</facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Hemanth Sharma</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Hemanth Sharma is a Platform Evangelist at Adobe Systems. He has been working on Flash Platform for over 12 years now. A certified expert in Adobe Flash and having worked in Flash Pro, Flash Player, Mobile and Digital Home engineering teams at Adobe, Hemanth has extensive experience in developing applications targeting the browser, desktop and multiple mobile devices, tablets and TV/STB. Hemanth is an expert commentator of UI / UX patterns with his wealth of experience implementing design patterns for complex applications. He blogs at http://www.hsharma.com/tech]]></bio>
+		<profileimage>assets/avatars/hemanth.png</profileimage>
+		<social>
+			<blog>http://www.hsharma.com/tech</blog>
+			<blogfeed>http://www.hsharma.com/tech/feed</blogfeed>
+			<twitter>hemanthsharma</twitter>
+			<twitterid>22899236</twitterid>
+			<flickr></flickr>
+			<facebook>http://www.facebook.com/hemanth.sharma</facebook>
+			<linkedin>http://www.linkedin.com/in/hemanthsharma </linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Holly Schinsky</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Tampa, FL</location>
+		<bio><![CDATA[Holly has been doing software development since 1996 with experience working for various Fortune 500 companies to start-ups. Her experience is primarily in OO languages and she thrives on constantly learning new things and is always up for a challenge. Technologies include Flex (desktop and mobile), LiveCycle, Java, C, and everything in between. ]]></bio>
+		<profileimage>assets/avatars/hollyschinsky.jpg</profileimage>
+		<social>
+			<blog>http://devgirl.org/</blog>
+			<blogfeed>http://devgirl.org/feed/</blogfeed>
+			<twitter>devgirlfl</twitter>
+			<twitterid>21206451</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin>http://www.linkedin.com/pub/holly-schinsky/3/896/a75</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+
+	<evangelist>
+		<name>Immanuel Noel</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Immanuel is a Platform Evangelist at Adobe. He comes with an experience on Flex, .NET, Android and PHP. His interests include RIAs, and writing applications or components that may be of use to fellow developers. Prior to being a Platform Evangelist, he has worked on enterprise applications based on Flex.]]></bio>
+		<profileimage>assets/avatars/immanuelnoel.jpg</profileimage>
+		<social>
+			<blog>http://blog.immanuelnoel.com/</blog>
+			<blogfeed>http://blog.immanuelnoel.com/feed/</blogfeed>
+			<twitter>immanuelnoel</twitter>
+			<twitterid>58206360</twitterid>
+			<flickr></flickr>
+			<facebook>http://www.facebook.com/immanuel.n?ref=profile</facebook>
+			<linkedin>http://www.linkedin.com/in/immanuelnoel</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>James Li</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>China</location>
+		<bio><![CDATA[I experienced as Flash Designer for 4 years and Flash Developer for 5 years, know well how to work and think from both positions. I worked in different fields like education, IT, advertising, so I have many pragmatic experience of design and development for different products such as flash cartoons, videos, games, micro sites even complete flash websites. Many of my works are for premium customers as BMW, MINI, Lufthansa and DHL. I worked aboard in Germany together with European brains and now I am trying to share all these knowledge to flashers in China.]]></bio>
+		<profileimage>assets/avatars/jamesli.jpg</profileimage>
+		<social>
+			<blog>http://jamesli.cn/blog</blog>
+			<blogfeed>http://jamesli.cn/blog/?feed=rss2</blogfeed>
+			<twitter></twitter>
+			<twitterid></twitterid>
+			<flickr></flickr>
+			<facebook>http://www.facebook.com/papajamesli</facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Jason Levine</name>
+		<jobtitle>Video and audio evangelist</jobtitle>
+		<location>AZ</location>
+		<bio><![CDATA[As a Worldwide Evangelist for Adobe, Jason travels the globe promoting Adobe Creative Suite 5 Master Collection. Since 2005, Jason has presented to hundreds and thousands of people, from San Francisco to Sydney and everywhere in between.]]></bio>
+		<profileimage>assets/avatars/jasonlevine.jpg</profileimage>
+		<social>
+			<blog>http://boodahjoomusic.com/blog/</blog>
+			<blogfeed>http://boodahjoomusic.com/blog/?feed=rss2</blogfeed>
+			<twitter>Beatlejase</twitter>
+			<twitterid>8630182</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Julieanne Kost</name>
+		<jobtitle>Photoshop evangelist</jobtitle>
+		<location>San Jose, CA</location>
+		<bio><![CDATA[Joining Adobe in 1992, Julieanne has learned her craft through hands-on experience and now serves as the Senior Digital Imaging Evangelist. Spanning digital imaging and illustration, her role includes customer education, product development, and market research. She is a frequent contributor to several publications, a speaker at numerous design conferences and tradeshows, and a teacher at distinguished photography workshops and fine art schools around the world.]]></bio>
+		<profileimage>assets/avatars/julieannekost.jpg</profileimage>
+		<social>
+			<blog>http://www.jkost.com/</blog>
+			<blogfeed></blogfeed>
+			<twitter>julieannekost</twitter>
+			<twitterid>30042831</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Kevin Hoyt</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Somewhere over the rainbow</location>
+		<bio><![CDATA[Kevin Hoyt is a Group Manager of Platform Evangelism at Adobe, Inc. where he's been actively involved in furthering web technologies for almost ten years. As a Platform Evangelist, Kevin is responsible for covering a broad array of Adobe technologies, and spends upwards of seventy percent of the year presenting keynotes, session and hands-on labs at conferences and user group events across the globe. Prior to joining Adobe, Kevin held various information technology roles ranging from web design to enterprise infrastructure. Kevin lives in Denver, CO and enjoys photography and general aviation in his free time.]]></bio>
+		<profileimage>assets/avatars/kevinhoyt.jpg</profileimage>
+		<social>
+			<blog>http://blog.kevinhoyt.org/</blog>
+			<blogfeed></blogfeed>
+			<twitter>parkerkrhoyt</twitter>
+			<twitterid>769935</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Lee Brimelow</name>
+		<jobtitle>Gaming evangelist</jobtitle>
+		<location>San Francisco, CA</location>
+		<bio><![CDATA[Lee Brimelow is a Platform Evangelist with Adobe and an award-winning interactive designer. He has worked in the past for companies such as America Online, Netscape, eBay, Stanford University, and Frog Design and has a passion for developing new and innovative ways of using the Flash Platform to create rich user experiences. He runs the popular technology blog at theFlashBlog.com, produces the free Flash tutorial resource at gotoAndLearn.com, and has a regular column on Flash in Layers Magazine. Lee is also the author of several titles for Lynda.com including Flash Professional 8 Video Integration and After Effects 7 + Flash 8 Integration.]]></bio>
+		<profileimage>assets/avatars/leebrimelow.jpg</profileimage>
+		<social>
+			<blog>http://blog.theflashblog.com/</blog>
+			<blogfeed>http://blog.theflashblog.com/?feed=rss2</blogfeed>
+			<twitter>leebrimelow</twitter>
+			<twitterid>1056611</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Lori Defurio</name>
+		<jobtitle>Developer Evangelist, Adobe PDF</jobtitle>
+		<location>Syracuse, NY</location>
+		<bio><![CDATA[Lori is a developer evangelist focused on Adobe PDF]]></bio>
+		<profileimage>assets/avatars/loridefurio.jpg</profileimage>
+		<social>
+			<blog>http://blogs.adobe.com/loridefurio/</blog>
+			<blogfeed>http://blogs.adobe.com/loridefurio/feed</blogfeed>
+			<twitter></twitter>
+			<twitterid></twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Mark Doherty</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Brighton, UK</location>
+		<bio><![CDATA[I'm Mark Doherty, Flash Platform Evangelist at Adobe Systems focused on Mobile and Devices with Flash technologies. My role at Adobe is work with leading OEMs, content providers and developer community to create a vibrant ecosystem around the Flash Platform on mobile and devices. Previously I have worked in Core Engineering, R&D and Custom Solutions at Adobe as a Software Engineer on the Flash mobile platform primarily on device integration of Flash Lite and Flash Cast on Symbian and Brew.<br/><br/>Before its acquisition by Adobe, I held a consulting role at Mobile Innovation focusing on Nokia's smartphone platforms, and with Panasonic R&D Core working on Symbian OS hardware integration, platform and application development with C++.]]></bio>
+		<profileimage>assets/avatars/markdoherty.jpg</profileimage>
+		<social>
+			<blog>http://www.flashmobileblog.com/</blog>
+			<blogfeed>http://www.flashmobileblog.com/feed/</blogfeed>
+			<twitter>markadoherty</twitter>
+			<twitterid>14992071</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Mark Dong</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>China</location>
+		<bio><![CDATA[Mark is an Adobe Developer Evangelist based in Beijing, China]]></bio>
+		<profileimage>assets/avatars/user.png</profileimage>
+		<social>
+			<blog></blog>
+			<blogfeed></blogfeed>
+			<twitter></twitter>
+			<twitterid></twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin>http://cn.linkedin.com/pub/mark-dong/21/991/129</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Michael Chaize</name>
+		<jobtitle>Enterprise evangelist</jobtitle>
+		<location>Paris, France</location>
+		<bio><![CDATA[I work with large accounts that need to understand the benefits of rich user interfaces, leverage the existing back-ends to add a rich presentation layer and measure the impact on the existing IT teams. I believe that intuitive user experiences in the Enterprise are key to successful developments of effective, efficient, engaging, easy to learn and error free applications. I like to promote concepts such as "Productivity by design" or "User Experience oriented architectures". In my previous role, I worked as a Technical Sales in France and assumed the promotion of the Flash Platform in front of large audiences of developers and IT managers. Before joining Adobe, I founded a software company and taught RIA languages such as Flex and PHP in IT engineering schools.]]></bio>
+		<profileimage>assets/avatars/michaelchaize.jpg</profileimage>
+		<social>
+			<blog>http://www.riagora.com/</blog>
+			<blogfeed>http://www.riagora.com/feed/</blogfeed>
+			<twitter>mchaize</twitter>
+			<twitterid>11470732</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Mihai Corlan</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bucharest, Romania</location>
+		<bio><![CDATA[I have been working for Adobe since 2006. Starting with June 2008 I am a Platform Evangelist with Adobe Systems (Flex, AIR, LCDS, BlazeDS, ColdFusion) and after years of developing web applications using HTML/JavaScript I enjoy a lot coding in Flex/ActionScript :)
+Before that, I was a member of Flex Builder team working on various wizards for Flex Builder 3. You can admire my work whenever you are using New Flex/Air project wizard or Import/Export Flex project.]]></bio>
+		<profileimage>assets/avatars/mihaicorlan.jpg</profileimage>
+		<social>
+			<blog>http://corlan.org/</blog>
+			<blogfeed>http://corlan.org/feed/</blogfeed>
+			<twitter>mcorlan</twitter>
+			<twitterid>15302864</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Mike Jones</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Somewhere in the UK</location>
+		<bio><![CDATA[Mike is a Gaming Evangelist at Adobe. Prior to joining Adobe he has had the opportunity to produce high quality and innovative solutions for Adidas, Sony, IBM, PlayStation, BT, BBC, Diana Ross, The Beach Boys and Vanessa Mae to list a few.<br/><br/>While Mike loves to code he is also a published author and speaks at various international conferences. When not presenting, he posts articles and tutorials about the Flash Platform on his blog.<br/><br/>Like a lot of his peers, when not geeking out over code Mike can be found with an XBox controller firmly suctioned to his hands, playing CoD.]]></bio>
+		<profileimage>assets/avatars/mikejones.jpg</profileimage>
+		<social>
+			<blog>http://blog.flashgen.com/</blog>
+			<blogfeed>http://blog.flashgen.com/feed</blogfeed>
+			<twitter>flashgen</twitter>
+			<twitterid>786795</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Paul Trani</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>On an airplane</location>
+		<bio><![CDATA[Paul Trani is a passionate 15 year veteran of the interactive design and development scene as well as a respected speaker an Adobe Flash Platform Evangelist. Paul has spent many years working for award-winning agencies as well as being an Adobe Certified Instructor, courseware developer, and Lynda.com trainer. Prior to joining Adobe, Paul led a team of interactive designers and developers at Starz Entertainment producing multi-million dollar web and mobile campaigns. ]]></bio>
+		<profileimage>assets/avatars/paultrani.jpg</profileimage>
+		<social>
+			<blog>http://www.paultrani.com/blog/</blog>
+			<blogfeed>http://www.paultrani.com/blog/index.php/feed/</blogfeed>
+			<twitter>paultrani</twitter>
+			<twitterid>14764591</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Peter Huang</name>
+		<jobtitle>Gaming and video evangelist</jobtitle>
+		<location>China</location>
+		<bio><![CDATA[Jun is a Gaming and Video Evangelist based in Beijing, China]]></bio>
+		<profileimage>assets/avatars/user.png</profileimage>
+		<social>
+			<blog>http://www.fans8.com/</blog>
+			<blogfeed>http://www.fans8.com/?feed=rss</blogfeed>
+			<twitter>fans8</twitter>
+			<twitterid>110070544</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Peter Ryce</name>
+		<jobtitle>Technical evangelist</jobtitle>
+		<location>San Francisco, CA</location>
+		<bio><![CDATA[Peter Ryce is a technical evangelist]]></bio>
+		<profileimage>assets/avatars/peterryce.jpg</profileimage>
+		<social>
+			<blog></blog>
+			<blogfeed></blogfeed>
+			<twitter></twitter>
+			<twitterid></twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Piotr Walczyszyn</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Warsaw, Poland</location>
+		<bio><![CDATA[I am Platform Evangelist for Adobe Systems. Specializing in Flex/AIR technologies. The opinions expressed here are my own, and not those of Adobe Systems. Oh, and I'm located in Warsaw/Krakow.]]></bio>
+		<profileimage>assets/avatars/piotrwalczyszyn.jpg</profileimage>
+		<social>
+			<blog>http://www.riaspace.net/</blog>
+			<blogfeed>http://www.riaspace.net/feed/</blogfeed>
+			<twitter>pwalczyszyn</twitter>
+			<twitterid>18694146</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Prashant Singh</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Prashant is a technical evangelist working for Adobe on the Adobe Flash platform. He works on finding solutions to enterprise and user specific problems, helping in establishing Adobe Flex as a technical standard. He regularly speaks at industry and developer focused conferences, having recently spoken at Great Indian Developer Summit (GIDS) and Adobe DevSummit. He also contributes to premium education by conducting workshops and hands-on sessions to make the student population aware about the power of the Adobe Flash platform.]]></bio>
+		<profileimage>assets/avatars/prashant.jpg</profileimage>
+		<social>
+			<blog>http://prashants.wordpress.com/</blog>
+			<blogfeed>http://prashants.wordpress.com/feed/</blogfeed>
+			<twitter>prksingh</twitter>
+			<twitterid>56650214</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Ramesh Srinivasaraghavan</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Ramesh leads the Adobe Flash Platform Evangelism initiatives of Adobe India. He has a wealth of experience working on a broad range of technologies ranging from Databases, Search Technologies, Expert Systems, Cloud Computing, RIA and Web 2.0 technologies. In his 19+ years of industry experience, he has led R&D initiatives for leading software companies. Passionate about education, he has been working with several universities and colleges in several initiatives like pedagogic techniques, curriculum revamp and faculty development. Ramesh also loves teaching school students and has a special love for computational linguistics and artificial intelligence.]]></bio>
+		<profileimage>assets/avatars/ramesh.jpg</profileimage>
+		<social>
+			<blog></blog>
+			<blogfeed></blogfeed>
+			<twitter>sriragam</twitter>
+			<twitterid>10465092</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin>http://www.linkedin.com/in/sriragam</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	<evangelist>
+		  <name>Raymond Camden</name>
+		  <jobtitle>Evangelist</jobtitle>
+		  <location>Lafayette, LA</location>
+		  <bio><![CDATA[Raymond Camden is a developer evangelist for Adobe focusing on ColdFusion, Flex, AIR, jQuery, and mobile development. He is a contributing author to numerous technical books including the best selling ColdFusion Web Application Construction Kit. He's spoken at conferences around the world and maintains many popular ColdFusion community web sites. He's the manager of RIAForge.org, CFLib.org, and writes at his blog: http://coldfusionjedi.com. Raymond is the happily married proud father of three kids and is somewhat of a Star Wars nut.]]> </bio>
+		  <profileimage>assets/avatars/raycamden.jpg</profileimage>
+		  <social>
+		       <blog>http://www.coldfusionjedi.com</blog>
+		       <blogfeed>http://www.coldfusionjedi.com/rss.cfm</blogfeed>
+		       <twitter>cfjedimaster</twitter>
+		       <twitterid>7021362</twitterid>
+		       <flickr></flickr>
+		       <facebook></facebook>
+		       <linkedin></linkedin>
+		       <vimeo></vimeo>
+		       <youtube></youtube>
+		  </social>
+	     </evangelist>
+	
+	<evangelist>
+		<name>Renaun Erickson</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Las Vegas, NV</location>
+		<bio><![CDATA[Bio for Renaun]]></bio>
+		<profileimage>assets/avatars/renaun.jpg</profileimage>
+		<social>
+			<blog>http://renaun.com/blog/</blog>
+			<blogfeed>http://renaun.com/blog/feed/</blogfeed>
+			<twitter>renaun</twitter>
+			<twitterid>805100</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>RJ Jacquez</name>
+		<jobtitle>eLearning evangelist</jobtitle>
+		<location>San Diego, CA</location>
+		<bio><![CDATA[RJ Jacquez is Product Evangelist for all thing Adobe eLearning, including Adobe Captivate, Adobe eLearning Suite and Adobe Connect as it pertains to eLearning. Prior to Adobe, RJ also worked for Macromedia, eHelp and Quadralay as Technology Evangelist. Jacquez is a Social Media Enthusiast and is very active on Twitter, Facebook, LinkedIn and on his Blog.]]></bio>
+		<profileimage>assets/avatars/rjacquez.png</profileimage>
+		<social>
+			<blog>http://rjacquez.com</blog>
+			<blogfeed>http://rjacquez.com/feed/</blogfeed>
+			<twitter>rjacquez</twitter>
+			<twitterid>23791725</twitterid>
+			<flickr></flickr>
+			<facebook>http://facebook.com/rjacquez</facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube>http://youtube.com/rjacquezTV</youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+	<name>Rufus Deuchler</name>
+	<jobtitle>Worldwide Design Evangelist</jobtitle>
+	<location>Florence, Italy</location>
+	<bio><![CDATA[Senior Worldwide Design Evangelist at Adobe Systems with an affinity for creative technology, Rufus Deuchler has established himself as a leader in a very specialized arena. With experience as a corporate and editorial designer, he brings more than 15 years of hands-on experience using Adobe Creative Suite applications to the creative table. Rufus adds another dimension to the arena by delivering comprehensive training programs to audiences large and small across the globe, and also contributes time as a teacher for graphic design students. He is an expert in creative workflows with on Adobe solutions. Based in Italy, Rufus enjoys traveling the world to further his mission as a software evangelist.]]></bio>
+	<profileimage>assets/avatars/rufusd.jpg</profileimage>
+	<social>
+		<blog>http://rufus.deuchler.net/</blog>
+		<blogfeed>http://rufus.deuchler.net/rss.xml</blogfeed>
+		<twitter>rufusd</twitter>
+		<twitterid>6472582</twitterid>
+		<flickr>http://www.flickr.com/photos/rufusd/</flickr>
+		<facebook>http://www.facebook.com/rufus.deuchler</facebook>
+		<linkedin>http://www.linkedin.com/in/rufusdeuchler</linkedin>
+		<vimeo></vimeo>
+		<youtube>http://www.youtube.com/user/RufusDeuchler</youtube>
+	</social>
+</evangelist>
+	
+	<evangelist>
+		<name>Russell Brown</name>
+		<jobtitle>Photoshop evangelist</jobtitle>
+		<location>San Jose, CA</location>
+		<bio><![CDATA[As Sr. Creative Director at Adobe Systems Incorporated,
+Russell Preston Brown holds a unique position in the computer industry. Brown maintains a vital presence in the digital design and publishing community, facilitating the exchange between the user and software developer that is so essential to Adobe's software development. With complete mastery and breath taking style, Brown shows users how to work - and play - with Adobe software. He has given the world's leading photographers, publishers, art directors, and artists a strong grasp of the software tools that, by virtually all accounts, have led to Adobe's applications becoming the standard by which others are measured. Remember, what Russell always says "Learning about Adobe Photoshop should never be boring"]]></bio>
+		<profileimage>assets/avatars/russellbrown.jpg</profileimage>
+		<social>
+			<blog>http://russellbrown.com/</blog>
+			<blogfeed></blogfeed>
+			<twitter></twitter>
+			<twitterid></twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Ryan Stewart</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Seattle, WA, USA</location>
+		<bio><![CDATA[Bio for Ryan goes here]]></bio>
+		<profileimage>assets/avatars/ryanstewart.jpg</profileimage>
+		<social>
+			<blog>http://blog.digitalbackcountry.com/</blog>
+			<blogfeed>http://blog.digitalbackcountry.com/feed/</blogfeed>
+			<twitter>ryanstewart</twitter>
+			<twitterid>11414</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+
+	<evangelist>
+		<name>Serge Jespers</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Mechelen, Belgium</location>
+		<bio><![CDATA[Serge Jespers is an Adobe Platform Evangelist and longtime Flash enthusiast. For more than 10 years he has been working with Flash to develop award-winning online experiences, including projects for Belgium's largest media company in support of numerous TV shows such as Idols, Big Brother, and Miss Belgium. He became an Adobe certified freelance Flash designer/developer in 2004 and joined Adobe in 2007.<br/><br/>Serge believes you can do virtually anything with Flash, and is eager to prove it. Born and raised in Belgium, he now lives near Antwerp when he is not traveling all over Europe, the Middle East, and Africa (EMEA) to spread the word about AIR, Flash, and Flex.]]></bio>
+		<profileimage>assets/avatars/sergejespers.jpg</profileimage>
+		<social>
+			<blog>http://webkitchen.be</blog>
+			<blogfeed>http://webkitchen.be/feed/</blogfeed>
+			<twitter>sjespers</twitter>
+			<twitterid>785729</twitterid>
+			<flickr>http://www.flickr.com/photos/sjespers/</flickr>
+			<facebook>http://www.facebook.com/sjespers</facebook>
+			<linkedin>http://www.linkedin.com/in/sjespers</linkedin>
+			<vimeo>http://vimeo.com/sjespers</vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Sujit Reddy Gurrala</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>Bangalore, India</location>
+		<bio><![CDATA[Sujit Reddy Gurrala is a Technical Evangelist for Flash Platform technologies at Adobe. He brings with him a great deal of expertise in Flex, J2EE, and PHP. He specializes in building enterprise applications on Adobe Flash Platform and has a blog focusing on the integration of Adobe Flex with Adobe LiveCycle Data Services (and BlazeDS) at http://sujitreddyg.wordpress.com]]></bio>
+		<profileimage>assets/avatars/sujit.jpg</profileimage>
+		<social>
+			<blog>http://sujitreddyg.wordpress.com/</blog>
+			<blogfeed>http://sujitreddyg.wordpress.com/feed/</blogfeed>
+			<twitter>sujitg</twitter>
+			<twitterid>14817612</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Terry Ryan</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>PH</location>
+		<bio><![CDATA[I'm a Worldwide Developer Evangelist for Adobe. My job basically entails me traveling the world and talking about the developer tools and technologies that Adobe has to offer or that we support.<br/><br/>I'm also the author of Driving Technical Change. It's about convinving reluctant co-workers to adopt new tools and techniques.]]></bio>
+		<profileimage>assets/avatars/terryryan.png</profileimage>
+		<social>
+			<blog>http://www.terrenceryan.com/</blog>
+			<blogfeed>http://feeds.feedburner.com/Terrenceryan</blogfeed>
+			<twitter>tpryan</twitter>
+			<twitterid>775187</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Terry White</name>
+		<jobtitle>Design evangelist</jobtitle>
+		<location>MI</location>
+		<bio><![CDATA[Worldwide Creative Suite Design Evangelist for Adobe Systems. Terry has been with Adobe for over a decade and has extensive knowledge of Adobe's Creative Professional product line.]]></bio>
+		<profileimage>assets/avatars/terrywhite.jpg</profileimage>
+		<social>
+			<blog>http://terrywhite.com/techblog/</blog>
+			<blogfeed></blogfeed>
+			<twitter>terrylwhite</twitter>
+			<twitterid>18188445</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Tom Krcha</name>
+		<jobtitle>Gaming evangelist</jobtitle>
+		<location>Czech Republic</location>
+		<bio><![CDATA[Tom is part of Adobe Platform Evangelism team in Europe, and has been working with Flash for over a decade. He focuses on mobile, realtime, peer-to-peer, media, streaming and collaboration. Over the years, Tom has participated in many Flash media streaming projects including CDNs, videochats, realtime multi-user applications, IPTV and award-winning websites.]]></bio>
+		<profileimage>assets/avatars/tomkrcha.jpg</profileimage>
+		<social>
+			<blog>http://tom.krcha.com/</blog>
+			<blogfeed>http://www.flashrealtime.com/feed/rss/</blogfeed>
+			<twitter>tomkrcha</twitter>
+			<twitterid>16866563</twitterid>
+			<flickr></flickr>
+			<facebook></facebook>
+			<linkedin></linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+	
+	<evangelist>
+		<name>Zerlot Ma</name>
+		<jobtitle>Developer evangelist</jobtitle>
+		<location>China</location>
+		<bio><![CDATA[Zerlot is an Adobe Developer Evangelist based in Beijing, China]]></bio>
+		<profileimage>assets/avatars/user.png</profileimage>
+		<social>
+			<blog>http://www.7yue.com/</blog>
+			<blogfeed>http://www.7yue.com/rss.xml</blogfeed>
+			<twitter>7yue</twitter>
+			<twitterid>14075923</twitterid>
+			<flickr>http://www.flickr.com/photos/7yue/</flickr>
+			<facebook></facebook>
+			<linkedin>http://cn.linkedin.com/pub/zerlot-ma/1/54a/700</linkedin>
+			<vimeo></vimeo>
+			<youtube></youtube>
+		</social>
+	</evangelist>
+
+
+
+
+
+</evangelists>

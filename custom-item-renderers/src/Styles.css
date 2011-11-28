@@ -1,0 +1,19 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace components "components.*";
+
+global
+{
+	color: #6a7178;
+	textShadowColor: #f2f2f5;
+}
+
+components|EvangelistItemRenderer
+{
+	fontWeight: bold;
+}
+
+.iconItemRendererMessageStyle
+{
+	fontWeight: normal;
+}

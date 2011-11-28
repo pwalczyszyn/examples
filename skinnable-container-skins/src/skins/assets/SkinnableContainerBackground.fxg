@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="200" viewWidth="200" ai:appVersion="15.0.2.399" ATE:version="1.0.0" flm:version="1.0.0" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:ai="http://ns.adobe.com/ai/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008"
+	scaleGridLeft="11" scaleGridTop="11" scaleGridRight="189" scaleGridBottom="189">
+      <Rect x="0.5" y="0.5" width="199" height="199" radiusX="10.1531" radiusY="10.1531" ai:seqID="3">
+        <fill>
+          <SolidColor color="#F1F1F1"/>
+        </fill>
+        <stroke>
+          <SolidColorStroke caps="none" joints="miter" miterLimit="10" color="#B3B3B3"/>
+        </stroke>
+      </Rect>
+</Graphic>
